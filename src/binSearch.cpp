@@ -144,7 +144,7 @@ BTNode* genExampleLeft(BTNode* rootNodeLeft){
 }
 
 BTNode* genExampleBalanced(BTNode* rootNodeBalanced) {
-    int classData[] = {6,11,4,7,9,13,3,5,12,14};
+    int classData[] = {6,11,4,7,9,13,3,5,12,14,1};
     for(int ii = 0; ii < 11; ii++) {
         addNode(rootNodeBalanced, classData[ii]);
     }
