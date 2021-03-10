@@ -125,6 +125,34 @@ BTNode* genExampleTree(BTNode* root) {
     return root;
 }
 
+BTNode* genExampleRight(BTNode* rootNodeRight){
+    int classData[] = {3,4,5,6,7,8,9,11,12,13,14};
+    for(int i = 0;i < 11; i++){
+        addNode(rootNodeRight, classData[i]);
+    }
+
+    return rootNodeRight;
+}
+
+BTNode* genExampleLeft(BTNode* rootNodeLeft){
+    int classData[] = {13,12,11,9,8,7,6,5,4,3,1};
+    for(int i = 0;i < 11; i++){
+        addNode(rootNodeLeft, classData[i]);
+    }
+
+    return rootNodeLeft;
+}
+
+BTNode* genExampleBalanced(BTNode* rootNodeBalanced) {
+    int classData[] = {6,11,4,7,9,13,3,5,12,14};
+    for(int ii = 0; ii < 11; ii++) {
+        addNode(rootNodeBalanced, classData[ii]);
+    }
+    return rootNodeBalanced;
+}
+
+
+
 /**
  * Prints out a representtation of a binary search tree
  * 
@@ -171,15 +199,15 @@ void printBT(const string& prefix, BTNode* node, bool isLeft)
     {
         cout << prefix;
 
-        cout << (isLeft ? "├──" : "└──" );
+        cout << (isLeft ? "| --" : "L--" );
 
         // print the value of the node
         //cout << node->nodeName() << ':' << node->nodeData() << std::endl;
         cout << node->nodeData() << std::endl;
 
         // enter the next tree level - left and right branch
-        printBT( prefix + (isLeft ? "│   " : "    "), node->left, true);
-        printBT( prefix + (isLeft ? "│   " : "    "), node->right, false);
+        printBT( prefix + (isLeft ? "|   " : "    "), node->left, true);
+        printBT( prefix + (isLeft ? "|   " : "    "), node->right, false);
     }
 }
 
@@ -196,7 +224,24 @@ void printBT(BTNode* node)
 
 int main(int, char**) {
     BTNode* rootNode = new BTNode(0); // pointer to the root node
+    BTNode* rootNodeRight = new BTNode(1);
+    BTNode* rootNodeLeft = new BTNode(14);
+    BTNode* rootNodeBalanced = new BTNode(8); // pointer to the root node
+    /*
     genExampleTree(rootNode);
     printBT(rootNode);
     printTree(rootNode);
+
+*/    
+    genExampleRight(rootNodeRight);
+    printBT(rootNodeRight);
+    printTree(rootNodeRight);
+
+    genExampleLeft(rootNodeLeft);
+    printBT(rootNodeLeft);
+    printTree(rootNodeLeft);
+
+    genExampleBalanced(rootNodeBalanced);
+    printBT(rootNodeBalanced);
+    printTree(rootNodeBalanced);
 }
